@@ -11,19 +11,19 @@ export class Vector2 {
     }
 
     subtract(b: Vector2) {
-	return new Vector2(this.x - b.x, this.y - b.y);
+        return new Vector2(this.x - b.x, this.y - b.y);
     }
 
     dot(b: Vector2) {
-	return this.x * b.x + this.y * b.y;
+        return this.x * b.x + this.y * b.y;
     }
 
     scale(r: number) {
-	return new Vector2(this.x * r, this.y * r);
+        return new Vector2(this.x * r, this.y * r);
     }
 
     abs() {
-	return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
     }
 }
 
@@ -32,9 +32,9 @@ export class Vector3 {
     public y: number;
     public z: number;
     constructor(nx, ny, nz) {
-	this.x = nx;
-	this.y = ny;
-	this.z = nz;
+        this.x = nx;
+        this.y = ny;
+        this.z = nz;
     }
 
     add(b: Vector3) {
@@ -42,24 +42,24 @@ export class Vector3 {
     }
 
     subtract(b: Vector3) {
-	return new Vector3(this.x - b.x, this.y - b.y, this.z - b.z);
+        return new Vector3(this.x - b.x, this.y - b.y, this.z - b.z);
     }
 
     dot(b: Vector3) {
-	return this.x * b.x + this.y * b.y + this.z * b.z;
+        return this.x * b.x + this.y * b.y + this.z * b.z;
     }
 
     cross(b: Vector3) {
-	return new Vector3(this.y * b.z - this.z * b.y,
-			   this.z * b.x - this.x * b.z,
-			   this.x * b.y - this.y * b.x);
+        return new Vector3(this.y * b.z - this.z * b.y,
+                           this.z * b.x - this.x * b.z,
+                           this.x * b.y - this.y * b.x);
     }
 
     scale(r: number) {
-	return new Vector3(this.x * r, this.y * r, this.z * r);
+        return new Vector3(this.x * r, this.y * r, this.z * r);
     }
 
     abs() {
-	return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
     }
 }
