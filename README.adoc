@@ -22,3 +22,25 @@ make
 
 # Visit dist/index.html to view the result.
 ----
+
+== Troubleshooting
+=== `npx: command not found` error
+On some environment, the command `npx` is not available because node.js' version is too old or whatever reasons.
+
+If so, in `Makefile` in the repository root, replace
+[source,sh]
+----
+npx webpack
+....
+npx tslinter 'src/**/*.{ts,tsx}'
+npx jest
+----
+with
+[source,sh]
+----
+node node_modules/webpack/bin/webpack.js
+....
+node_modules/tslinter/bin/tslinter 'src/**/*.{ts,tsx}'
+node node_modules/jest/bin/jest.js
+----
+to get `make` and `make test` to work.
