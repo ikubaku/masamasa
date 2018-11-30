@@ -4,7 +4,8 @@
   "description": "A game engine for creating small games that runs on web browsers.",
   "private": true,
   "scripts": {
-    "test": "npm run play"
+    "build": "make",
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,9 @@
   "author": "ikubaku",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
     "ts-loader": "^5.3.0",
     "typescript": "^3.1.6",
     "webpack": "^4.26.1",
