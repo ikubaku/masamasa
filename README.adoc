@@ -14,6 +14,7 @@ A game engine for creating small games that runs on web browsers. Based on p5.js
 [source,sh]
 ----
 git clone <URL of this repo>
+cd masamasa
 npm i
 
 # Something special is yet to done. There is only some piece of quickstart program.
