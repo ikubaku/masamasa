@@ -1,7 +1,7 @@
 module.exports = {
   mode: "development",
   devtool: "inline-source-map",
-  entry: "./src/main.ts",
+  entry: "./src/masamasa.ts",
   output: {
     filename: "main.js"
   },
