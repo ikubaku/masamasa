@@ -39,7 +39,7 @@ function s(ctx: p5) {
         // Clear canvas
         ctx.background(0);
 
-        // State update process
+        // Start update process
         
         // Draw process
 	// // Sample object
