@@ -2,93 +2,94 @@ import * as p5 from "p5";
 import { Game } from "./game";
 
 export class Engine {
-    static canvasWidth: number;
-    static canvasHeight: number;
-    static fps: number;
-    static ctx: p5;
-    static deltaTime: number;
+    public static ctx: p5;
+    public static deltaTime: number;
+
+    private static canvasWidth: number;
+    private static canvasHeight: number;
+    private static fps: number;
 
     constructor() {
-	Engine.canvasWidth = 100;
-	Engine.canvasHeight = 100;
-	Engine.fps = 30;
-	Engine.deltaTime = 0;
-    }
-    
-    setFPS(fps: number): void {
-	Engine.fps = fps;
+        Engine.canvasWidth = 100;
+        Engine.canvasHeight = 100;
+        Engine.fps = 30;
+        Engine.deltaTime = 0;
     }
 
-    setCanvasSize(width: number, height: number): void {
-	Engine.canvasWidth = width;
-	Engine.canvasHeight = height;
+    public setFPS(fps: number): void {
+        Engine.fps = fps;
     }
 
-    run(game: Game): void {
-	let gameMain = function(ctx: p5): void {
-	    let canvasWidth = Engine.canvasWidth;
-	    let canvasHeight = Engine.canvasHeight;
-	    let fps = Engine.fps;
-	    let isFrameDropped: boolean;
-	    let deltaTime: number = 0;
-	    let frameStartTime: number;
-	    let frameEndTime: number;
+    public setCanvasSize(width: number, height: number): void {
+        Engine.canvasWidth = width;
+        Engine.canvasHeight = height;
+    }
 
-	    Engine.ctx = ctx;
-	    
-	    ctx.setup = () => {
-		ctx.createCanvas(canvasWidth, canvasHeight);
-		ctx.frameRate(fps);
+    public run(game: Game): void {
+        const gameMain = (ctx: p5) => {
+            const canvasWidth = Engine.canvasWidth;
+            const canvasHeight = Engine.canvasHeight;
+            const fps = Engine.fps;
+            let isFrameDropped: boolean;
+            let deltaTime: number = 0;
+            let frameStartTime: number;
+            let frameEndTime: number;
 
-		// frameStartTime is negative if it is the first time to enter the draw() loop
-		frameStartTime = -1;
+            Engine.ctx = ctx;
 
-		// Initialize user program
-		game.init();
-	    };
+            ctx.setup = () => {
+                ctx.createCanvas(canvasWidth, canvasHeight);
+                ctx.frameRate(fps);
 
-	    ctx.draw = () => {
-		// if frameStartTime < 0 it is the first time to do draw()
-		if (frameStartTime >= 0) {
-		    // Get frame end time
-		    frameEndTime = ctx.millis();
-		    // Update delta time
-		    deltaTime = (frameEndTime - frameStartTime) / 1000;
-		    if (deltaTime <= 0) {
-			// Frame drop
-			deltaTime = 0;
-			isFrameDropped = true;
-		    } else {
-			isFrameDropped = false;
-		    }
-		}
-		// Expose new value via a static variable of Engine(this should be avoided in the future release)
-		Engine.deltaTime = deltaTime;
+                // frameStartTime is negative if it is the first time to enter the draw() loop
+                frameStartTime = -1;
 
-		// Get frame start time
-		frameStartTime = ctx.millis();
-		// Clear canvas
-		ctx.background(0);
+                // Initialize user program
+                game.init();
+            };
 
-		// Start update process
-		game.update();
+            ctx.draw = () => {
+                // if frameStartTime < 0 it is the first time to do draw()
+                if (frameStartTime >= 0) {
+                    // Get frame end time
+                    frameEndTime = ctx.millis();
+                    // Update delta time
+                    deltaTime = (frameEndTime - frameStartTime) / 1000;
+                    if (deltaTime <= 0) {
+                        // Frame drop
+                        deltaTime = 0;
+                        isFrameDropped = true;
+                    } else {
+                        isFrameDropped = false;
+                    }
+                }
+                // Expose new value via a static variable of Engine(this should be avoided in the future release)
+                Engine.deltaTime = deltaTime;
 
-		// Draw process
-		game.draw();
-		// // Sample object
-		ctx.fill(255);
-		ctx.rect(390, 290 + 20 * ctx.sin(ctx.TWO_PI * ctx.frameCount / 30), 20, 20);
+                // Get frame start time
+                frameStartTime = ctx.millis();
+                // Clear canvas
+                ctx.background(0);
 
-		// Delta time viewer(debug)
-		if (isFrameDropped) {
-		    ctx.fill(ctx.color(255, 0, 0));
-		} else {
-		    ctx.fill(255);
-		}
-		ctx.text("deltaTime= " + ctx.str(deltaTime) + " (s)", 10, 10);
-	    };
-	};
+                // Start update process
+                game.update();
 
-	const app = new p5(gameMain);
+                // Draw process
+                game.draw();
+                // // Sample object
+                ctx.fill(255);
+                ctx.rect(390, 290 + 20 * ctx.sin(ctx.TWO_PI * ctx.frameCount / 30), 20, 20);
+
+                // Delta time viewer(debug)
+                if (isFrameDropped) {
+                    ctx.fill(ctx.color(255, 0, 0));
+                } else {
+                    ctx.fill(255);
+                }
+                ctx.text("deltaTime= " + ctx.str(deltaTime) + " (s)", 10, 10);
+            };
+        };
+
+        const app = new p5(gameMain);
     }
 }

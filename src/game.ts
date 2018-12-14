@@ -1,16 +1,16 @@
 export class Game {
     // Initialize the game scene
-    init() {
-	// Abstract function
+    public init() {
+        // Abstract function
     }
 
     // Update the game state
-    update() {
-	// Abstract function
+    public update() {
+        // Abstract function
     }
 
     // Drawing process
-    draw() {
-	// Abstract function
+    public draw() {
+        // Abstract function
     }
 }

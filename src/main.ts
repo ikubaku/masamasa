@@ -1,29 +1,29 @@
-import * as masamasa from "./masamasa"
+import * as masamasa from "./masamasa";
 
 class MyGame extends masamasa.Game {
-    char_x: number;
-    char_y: number;
-    vel: number;
+    private charX: number;
+    private charY: number;
+    private vel: number;
 
-    init() {
-	this.char_x = 0;
-	this.char_y = 0;
-	this.vel = 10;
+    public init() {
+        this.charX = 0;
+        this.charY = 0;
+        this.vel = 10;
     }
 
-    update() {
-	this.char_x += this.vel * masamasa.Engine.deltaTime;
-	this.char_y += this.vel * masamasa.Engine.deltaTime;
+    public update() {
+        this.charX += this.vel * masamasa.Engine.deltaTime;
+        this.charY += this.vel * masamasa.Engine.deltaTime;
     }
 
-    draw() {
-	masamasa.Engine.ctx.fill(255);
-	masamasa.Engine.ctx.rect(this.char_x, this.char_y, 32, 32);
+    public draw() {
+        masamasa.Engine.ctx.fill(255);
+        masamasa.Engine.ctx.rect(this.charX, this.charY, 32, 32);
     }
 }
 
-let e = new masamasa.Engine()
-let g = new MyGame()
+const e = new masamasa.Engine();
+const g = new MyGame();
 
 e.setFPS(30);
 e.setCanvasSize(800, 600);
