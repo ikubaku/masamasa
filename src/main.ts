@@ -3,15 +3,17 @@ import * as masamasa from "./masamasa"
 class MyGame extends masamasa.Game {
     char_x: number;
     char_y: number;
+    vel: number;
 
     init() {
 	this.char_x = 0;
 	this.char_y = 0;
+	this.vel = 10;
     }
 
     update() {
-	this.char_x += 1;
-	this.char_y += 1;
+	this.char_x += this.vel * masamasa.Engine.deltaTime;
+	this.char_y += this.vel * masamasa.Engine.deltaTime;
     }
 
     draw() {
