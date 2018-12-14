@@ -6,7 +6,15 @@ export class Engine {
     static canvasHeight: number;
     static fps: number;
     static ctx: p5;
+    static deltaTime: number;
 
+    constructor() {
+	Engine.canvasWidth = 100;
+	Engine.canvasHeight = 100;
+	Engine.fps = 30;
+	Engine.deltaTime = 0;
+    }
+    
     setFPS(fps: number): void {
 	Engine.fps = fps;
     }
@@ -22,7 +30,7 @@ export class Engine {
 	    let canvasHeight = Engine.canvasHeight;
 	    let fps = Engine.fps;
 	    let isFrameDropped: boolean;
-	    let deltaTime: number;
+	    let deltaTime: number = 0;
 	    let frameStartTime: number;
 	    let frameEndTime: number;
 
@@ -54,6 +62,8 @@ export class Engine {
 			isFrameDropped = false;
 		    }
 		}
+		// Expose new value via a static variable of Engine(this should be avoided in the future release)
+		Engine.deltaTime = deltaTime;
 
 		// Get frame start time
 		frameStartTime = ctx.millis();
