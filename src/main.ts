@@ -1,45 +1,30 @@
-import * as p5 from "p5";
+import * as masamasa from "./masamasa";
 
-function s(
-  sketch: p5
-) {
-  class NiceObject {
-    pos_x: number;
-    pos_y: number;
+class MyGame extends masamasa.Game {
+    private charX: number;
+    private charY: number;
+    private vel: number;
 
-    constructor(x: number, y: number) {
-      this.pos_x = x;
-      this.pos_y = y;
+    public init() {
+        this.charX = 0;
+        this.charY = 0;
+        this.vel = 10;
     }
-    draw() {
-      sketch.rect(this.pos_x, this.pos_y + 20 * sketch.sin(sketch.TWO_PI * sketch.frameCount / 30), 20, 20);
+
+    public update() {
+        this.charX += this.vel * masamasa.Engine.deltaTime;
+        this.charY += this.vel * masamasa.Engine.deltaTime;
     }
-  }
 
-  let characters: Array<NiceObject> = [];
-
-  sketch.setup = () => {
-    sketch.createCanvas(800, 600);
-    sketch.frameRate(30);
-
-    characters.push(new NiceObject(10, 290));
-    characters.push(new NiceObject(30, 290));
-    characters.push(new NiceObject(50, 290));
-    characters.push(new NiceObject(70, 290));
-    characters.push(new NiceObject(90, 290));
-  };
-
-  sketch.draw = () => {
-    sketch.background(0);
-    sketch.fill(255);
-    sketch.rect(390, 290 + 20 * sketch.sin(sketch.TWO_PI * sketch.frameCount / 30), 20, 20);
-
-    for(let c of characters) {
-      c.draw();
+    public draw() {
+        masamasa.Engine.ctx.fill(255);
+        masamasa.Engine.ctx.rect(this.charX, this.charY, 32, 32);
     }
-  };
 }
 
-const myp5 = new p5(
-  s
-);
+const e = new masamasa.Engine();
+const g = new MyGame();
+
+e.setFPS(30);
+e.setCanvasSize(800, 600);
+e.run(g);
