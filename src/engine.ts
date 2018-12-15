@@ -25,11 +25,11 @@ export class Engine {
     }
 
     public static getP5Context(): p5 {
-	return Engine.ctx;
+        return Engine.ctx;
     }
 
     public static getDeltaTime(): number {
-	return Engine.deltaTime;
+        return Engine.deltaTime;
     }
 
     public static run(game: Game): void {
