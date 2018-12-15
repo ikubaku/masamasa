@@ -1,3 +1,4 @@
+/* tslint:disable:max-classes-per-file */
 import { Engine } from "./engine";
 import { Vector2 } from "./vector2";
 
