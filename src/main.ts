@@ -1,6 +1,6 @@
-import * as masamasa from "./masamasa";
+import { Engine, Game } from "./masamasa";
 
-class MyGame extends masamasa.Game {
+class MyGame extends Game {
     private charX: number;
     private charY: number;
     private vel: number;
@@ -12,19 +12,19 @@ class MyGame extends masamasa.Game {
     }
 
     public update() {
-        this.charX += this.vel * masamasa.Engine.deltaTime;
-        this.charY += this.vel * masamasa.Engine.deltaTime;
+        this.charX += this.vel * Engine.getDeltaTime();
+        this.charY += this.vel * Engine.getDeltaTime();
     }
 
     public draw() {
-        masamasa.Engine.ctx.fill(255);
-        masamasa.Engine.ctx.rect(this.charX, this.charY, 32, 32);
+        Engine.getP5Context().fill(255);
+        Engine.getP5Context().rect(this.charX, this.charY, 32, 32);
     }
 }
 
-const e = new masamasa.Engine();
 const g = new MyGame();
 
-e.setFPS(30);
-e.setCanvasSize(800, 600);
-e.run(g);
+Engine.init();
+Engine.setFPS(30);
+Engine.setCanvasSize(800, 600);
+Engine.run(g);

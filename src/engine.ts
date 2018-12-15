@@ -2,30 +2,37 @@ import * as p5 from "p5";
 import { Game } from "./game";
 
 export class Engine {
-    public static ctx: p5;
-    public static deltaTime: number;
-
     private static canvasWidth: number;
     private static canvasHeight: number;
     private static fps: number;
+    private static ctx: p5;
+    private static deltaTime: number;
 
-    constructor() {
+    public static init() {
         Engine.canvasWidth = 100;
         Engine.canvasHeight = 100;
         Engine.fps = 30;
         Engine.deltaTime = 0;
     }
 
-    public setFPS(fps: number): void {
+    public static setFPS(fps: number): void {
         Engine.fps = fps;
     }
 
-    public setCanvasSize(width: number, height: number): void {
+    public static setCanvasSize(width: number, height: number): void {
         Engine.canvasWidth = width;
         Engine.canvasHeight = height;
     }
 
-    public run(game: Game): void {
+    public static getP5Context(): p5 {
+        return Engine.ctx;
+    }
+
+    public static getDeltaTime(): number {
+        return Engine.deltaTime;
+    }
+
+    public static run(game: Game): void {
         const gameMain = (ctx: p5) => {
             const canvasWidth = Engine.canvasWidth;
             const canvasHeight = Engine.canvasHeight;
