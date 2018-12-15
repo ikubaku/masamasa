@@ -17,13 +17,13 @@ export class Pos2 extends Vector2 {
 
     public add(b: Pos2) {
         return Pos2.fromVector2(
-            super.add(b.toVector2())
+            super.add(b.toVector2()),
         );
     }
 
     public subtract(b: Pos2) {
         return Pos2.fromVector2(
-            super.subtract(b.toVector2())
+            super.subtract(b.toVector2()),
         );
     }
 
@@ -33,7 +33,7 @@ export class Pos2 extends Vector2 {
 
     public scale(r: number) {
         return Pos2.fromVector2(
-            super.scale(r)
+            super.scale(r),
         );
     }
 
@@ -57,13 +57,13 @@ export class Vel2 extends Vector2 {
 
     public add(b: Vel2) {
         return Vel2.fromVector2(
-            super.add(b.toVector2())
+            super.add(b.toVector2()),
         );
     }
 
     public subtract(b: Vel2) {
         return Vel2.fromVector2(
-            super.subtract(b.toVector2())
+            super.subtract(b.toVector2()),
         );
     }
 
@@ -73,7 +73,7 @@ export class Vel2 extends Vector2 {
 
     public scale(r: number) {
         return Vel2.fromVector2(
-            super.scale(r)
+            super.scale(r),
         );
     }
 
@@ -83,7 +83,7 @@ export class Vel2 extends Vector2 {
 
     public toDelta() {
         return Pos2.fromVector2(
-            this.toVector2().scale(Engine.getDeltaTime())
+            this.toVector2().scale(Engine.getDeltaTime()),
         );
     }
 }
@@ -103,13 +103,13 @@ export class Accel2 extends Vector2 {
 
     public add(b: Accel2) {
         return Accel2.fromVector2(
-            super.add(b.toVector2())
+            super.add(b.toVector2()),
         );
     }
 
     public subtract(b: Accel2) {
         return Accel2.fromVector2(
-            super.subtract(b.toVector2())
+            super.subtract(b.toVector2()),
         );
     }
 
@@ -119,7 +119,7 @@ export class Accel2 extends Vector2 {
 
     public scale(r: number) {
         return Accel2.fromVector2(
-            super.scale(r)
+            super.scale(r),
         );
     }
 
@@ -129,7 +129,7 @@ export class Accel2 extends Vector2 {
 
     public toDelta() {
         return Vel2.fromVector2(
-            this.toVector2().scale(Engine.getDeltaTime())
+            this.toVector2().scale(Engine.getDeltaTime()),
         );
     }
 }
