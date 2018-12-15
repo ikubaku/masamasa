@@ -1,5 +1,7 @@
 = masamasa
 
+[![Build Status](https://travis-ci.org/ikubaku/masamasa.svg?branch=master)](https://travis-ci.org/ikubaku/masamasa)
+
 A game engine for creating small games that runs on web browsers. Based on p5.js
 
 !! Under Blazing Construction !!
