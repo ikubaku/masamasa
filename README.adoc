@@ -33,7 +33,7 @@ If so, in `Makefile` in the repository root, replace
 ----
 npx webpack
 ....
-npx tslinter 'src/**/*.{ts,tsx}'
+npx tslint 'src/**/*.{ts,tsx}'
 npx jest
 ----
 with
@@ -41,7 +41,7 @@ with
 ----
 node node_modules/webpack/bin/webpack.js
 ....
-node_modules/tslinter/bin/tslinter 'src/**/*.{ts,tsx}'
+node_modules/tslinter/bin/tslint 'src/**/*.{ts,tsx}'
 node node_modules/jest/bin/jest.js
 ----
 to get `make` and `make test` to work.
