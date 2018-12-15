@@ -1,24 +1,21 @@
-import { Engine, Game } from "./masamasa";
+import { Engine, Game, Pos2, Vel2 } from "./masamasa";
 
 class MyGame extends Game {
-    private charX: number;
-    private charY: number;
-    private vel: number;
+    private pos: Pos2;
+    private vel: Vel2;
 
     public init() {
-        this.charX = 0;
-        this.charY = 0;
-        this.vel = 10;
+        this.pos = new Pos2(0, 0);
+        this.vel = new Vel2(32, 32);
     }
 
     public update() {
-        this.charX += this.vel * Engine.getDeltaTime();
-        this.charY += this.vel * Engine.getDeltaTime();
+        this.pos = this.pos.add(this.vel.ToDelta());
     }
 
     public draw() {
         Engine.getP5Context().fill(255);
-        Engine.getP5Context().rect(this.charX, this.charY, 32, 32);
+        Engine.getP5Context().rect(this.pos.x, this.pos.y, 32, 32);
     }
 }
 
