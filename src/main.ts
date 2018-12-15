@@ -10,7 +10,7 @@ class MyGame extends Game {
     }
 
     public update() {
-        this.pos = this.pos.add(this.vel.ToDelta());
+        this.pos = this.pos.add(this.vel.toDelta());
     }
 
     public draw() {
